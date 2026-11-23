@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>小港龍湖廟大士爺祭典數位文化資料庫</title>
+<meta name="description" content="依文化部數位典藏標準建置之小港龍湖廟大士爺祭典數位文化資料庫">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;600;700;900&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --text-xs: clamp(0.75rem,0.7rem+0.25vw,0.875rem);
+  --text-sm: clamp(0.875rem,0.8rem+0.35vw,1rem);
+  --text-base: clamp(1rem,0.95rem+0.25vw,1.125rem);
+  --text-lg: clamp(1.125rem,1rem+0.75vw,1.5rem);
+  --text-xl: clamp(1.5rem,1.2rem+1.25vw,2.25rem);
+  --text-2xl: clamp(2rem,1.2rem+2.5vw,3.5rem);
+  --space-1:.25rem;--space-2:.5rem;--space-3:.75rem;--space-4:1rem;--space-5:1.25rem;
+  --space-6:1.5rem;--space-8:2rem;--space-10:2.5rem;--space-12:3rem;--space-16:4rem;
+  --color-bg:#f6f2e9; --color-surface:#fbf8f1; --color-surface-2:#f9f5ec;
+  --color-surface-offset:#efe8da; --color-divider:#e5ddcc; --color-border:#d9cfba;
+  --color-text:#2b2620; --color-text-muted:#7c7466; --color-text-faint:#b3a992;
+  --color-primary:#9a3b26; --color-primary-hover:#7d2f1e; --color-primary-highlight:#ecd9d0;
+  --color-ink:#3a332a; --color-gold:#a07d33;
+  --cat-space:#41586e; --cat-person:#7a5a2e; --cat-work:#3f6a52; --cat-event:#9a3b26; --cat-av:#5b4a7a;
+  --radius-sm:.375rem; --radius-md:.5rem; --radius-lg:.75rem;
+  --shadow-md:0 4px 12px rgba(43,38,32,.08); --shadow-lg:0 12px 32px rgba(43,38,32,.14);
+  --font-display:'Noto Serif TC','PMingLiU',serif;
+  --font-body:'Noto Sans TC','Microsoft JhengHei',sans-serif;
+  --content-default:1100px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:none;text-size-adjust:none;scroll-behavior:smooth;scroll-padding-top:var(--space-16)}
+body{min-height:100dvh;line-height:1.7;font-family:var(--font-body);font-size:var(--text-base);color:var(--color-text);background:var(--color-bg)}
+img,svg{display:block;max-width:100%}
+input,button,select{font:inherit;color:inherit}
+button{cursor:pointer;background:none;border:none}
+a{color:var(--color-primary);text-decoration:none}
+a:hover{color:var(--color-primary-hover)}
+:focus-visible{outline:2px solid var(--color-primary);outline-offset:3px;border-radius:var(--radius-sm)}
+a,button,input,select{transition:color .18s,background .18s,border-color .18s,box-shadow .18s}
+::selection{background:rgba(154,59,38,.22)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0}
+
+/* header */
+.site-header{border-bottom:1px solid var(--color-divider);background:var(--color-surface)}
+.topbar{display:flex;justify-content:space-between;align-items:center;padding:var(--space-2) var(--space-5);font-size:var(--text-xs);color:var(--color-text-muted);border-bottom:1px solid var(--color-divider);letter-spacing:.08em}
+.masthead{max-width:var(--content-default);margin:0 auto;padding:var(--space-8) var(--space-5) var(--space-6)}
+.masthead .db-tag{display:inline-flex;align-items:center;gap:var(--space-2);font-size:var(--text-xs);letter-spacing:.35em;color:var(--color-primary);border:1px solid var(--color-border);border-radius:var(--radius-full);padding:var(--space-1) var(--space-3);margin-bottom:var(--space-4)}
+.masthead h1{font-family:var(--font-display);font-weight:900;font-size:var(--text-2xl);line-height:1.25;color:var(--color-ink);text-wrap:balance}
+.masthead .subtitle{margin-top:var(--space-3);color:var(--color-text-muted);font-size:var(--text-base);letter-spacing:.12em}
+.masthead .db-meta-row{display:flex;flex-wrap:wrap;gap:var(--space-2) var(--space-6);margin-top:var(--space-5);font-size:var(--text-xs);color:var(--color-text-muted)}
+.masthead .db-meta-row span b{color:var(--color-text);font-weight:500}
+
+/* nav */
+.tabs{position:sticky;top:0;z-index:50;background:rgba(251,248,241,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--color-divider)}
+.tabs-inner{max-width:var(--content-default);margin:0 auto;display:flex;gap:var(--space-1);overflow-x:auto;padding:0 var(--space-5)}
+.tab-btn{flex-shrink:0;padding:var(--space-3) var(--space-4);font-size:var(--text-sm);font-weight:500;color:var(--color-text-muted);border-bottom:2px solid transparent;letter-spacing:.06em;white-space:nowrap}
+.tab-btn:hover{color:var(--color-text)}
+.tab-btn[aria-selected="true"]{color:var(--color-primary);border-bottom-color:var(--color-primary);font-weight:700}
+
+main{max-width:var(--content-default);margin:0 auto;padding:var(--space-8) var(--space-5) var(--space-16)}
+.view{display:none}
+.view.active{display:block}
+
+/* generic */
+.section-title{font-family:var(--font-display);font-weight:700;font-size:var(--text-xl);color:var(--color-ink);margin-bottom:var(--space-2)}
+.section-note{color:var(--color-text-muted);font-size:var(--text-sm);margin-bottom:var(--space-6);max-width:72ch}
+.lead{max-width:72ch;margin-bottom:var(--space-8);text-wrap:pretty}
+
+/* overview */
+.core-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-6);box-shadow:var(--shadow-md);margin-bottom:var(--space-10)}
+.core-card h2{font-family:var(--font-display);font-size:var(--text-lg);font-weight:700;color:var(--color-primary);margin-bottom:var(--space-4)}
+.core-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--space-4) var(--space-8)}
+.core-item dt{font-size:var(--text-xs);color:var(--color-text-muted);letter-spacing:.15em;margin-bottom:var(--space-1)}
+.core-item dd{font-size:var(--text-sm);color:var(--color-text);line-height:1.65}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:var(--space-4);margin-bottom:var(--space-10)}
+.stat-card{background:var(--color-surface-2);border:1px solid var(--color-divider);border-radius:var(--radius-lg);padding:var(--space-5);cursor:pointer;text-align:left}
+.stat-card:hover{border-color:var(--color-primary);box-shadow:var(--shadow-md)}
+.stat-card .num{font-family:var(--font-display);font-size:var(--text-xl);font-weight:900;color:var(--color-ink)}
+.stat-card .label{font-size:var(--text-sm);color:var(--color-text-muted);margin-top:var(--space-1)}
+.stat-card .cat-dot{display:inline-block;width:.65em;height:.65em;border-radius:50%;margin-right:var(--space-2);vertical-align:baseline}
+.std-list{background:var(--color-surface);border:1px solid var(--color-divider);border-radius:var(--radius-lg);padding:var(--space-5) var(--space-6)}
+.std-list h3{font-size:var(--text-sm);font-weight:700;color:var(--color-ink);margin-bottom:var(--space-3);letter-spacing:.1em}
+.std-list ol{padding-left:1.2em;color:var(--color-text-muted);font-size:var(--text-sm)}
+.std-list li{margin-bottom:var(--space-2)}
+
+/* search toolbar */
+.toolbar{display:flex;flex-wrap:wrap;gap:var(--space-3);align-items:center;margin-bottom:var(--space-5)}
+.search-box{flex:1 1 260px;position:relative}
+.search-box input{width:100%;padding:var(--space-3) var(--space-4) var(--space-3) var(--space-10);border:1px solid var(--color-border);border-radius:var(--radius-md);background:var(--color-surface);font-size:var(--text-sm)}
+.search-box input:focus{outline:none;border-color:var(--color-primary);box-shadow:0 0 0 3px var(--color-primary-highlight)}
+.search-box svg{position:absolute;left:var(--space-3);top:50%;transform:translateY(-50%);color:var(--color-text-faint)}
+.chip{padding:var(--space-2) var(--space-4);border:1px solid var(--color-border);border-radius:var(--radius-full);font-size:var(--text-sm);color:var(--color-text-muted);background:var(--color-surface)}
+.chip:hover{border-color:var(--color-text-muted)}
+.chip[aria-pressed="true"]{background:var(--color-ink);border-color:var(--color-ink);color:#f6f2e9}
+.result-count{font-size:var(--text-xs);color:var(--color-text-muted);margin-bottom:var(--space-4);letter-spacing:.05em}
+.empty-state{padding:var(--space-16) var(--space-4);text-align:center;color:var(--color-text-muted);font-size:var(--text-sm)}
+
+/* record grid */
+.record-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:var(--space-4)}
+.record-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-5);cursor:pointer;display:flex;flex-direction:column;gap:var(--space-3);text-align:left}
+.record-card:hover{border-color:var(--color-primary);box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.record-card .card-top{display:flex;justify-content:space-between;align-items:center;gap:var(--space-2)}
+.rec-id{font-size:var(--text-xs);color:var(--color-text-faint);letter-spacing:.08em;font-family:var(--font-body)}
+.cat-tag{font-size:var(--text-xs);padding:var(--space-1) var(--space-3);border-radius:var(--radius-full);color:#fff;letter-spacing:.1em;flex-shrink:0}
+.cat-tag.空間{background:var(--cat-space)}.cat-tag.人物{background:var(--cat-person)}
+.cat-tag.作品{background:var(--cat-work)}.cat-tag.事件{background:var(--cat-event)}.cat-tag.影音{background:var(--cat-av)}
+.record-card h3{font-family:var(--font-display);font-size:var(--text-base);font-weight:700;color:var(--color-ink);line-height:1.5}
+.record-card .rec-date{font-size:var(--text-xs);color:var(--color-primary);letter-spacing:.05em}
+.record-card p{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.65;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.kw-row{display:flex;flex-wrap:wrap;gap:var(--space-1);margin-top:auto}
+.kw{font-size:var(--text-xs);color:var(--color-text-muted);background:var(--color-surface-offset);border-radius:var(--radius-sm);padding:var(--space-1) var(--space-2)}
+
+/* modal */
+.modal-overlay{position:fixed;inset:0;background:rgba(43,38,32,.5);z-index:100;display:none;align-items:flex-start;justify-content:center;padding:var(--space-6) var(--space-4);overflow-y:auto}
+.modal-overlay.open{display:flex}
+.modal{background:var(--color-surface);border-radius:var(--radius-lg);max-width:760px;width:100%;box-shadow:var(--shadow-lg);border:1px solid var(--color-border);margin:auto 0}
+.modal-head{display:flex;justify-content:space-between;align-items:flex-start;gap:var(--space-4);padding:var(--space-6) var(--space-6) var(--space-4);border-bottom:1px solid var(--color-divider)}
+.modal-head h2{font-family:var(--font-display);font-size:var(--text-lg);font-weight:700;color:var(--color-ink);line-height:1.5}
+.modal-close{font-size:var(--text-lg);color:var(--color-text-muted);padding:var(--space-1);flex-shrink:0}
+.modal-close:hover{color:var(--color-text)}
+.modal-body{padding:var(--space-5) var(--space-6) var(--space-6)}
+.meta-table{width:100%;border-collapse:collapse;font-size:var(--text-sm)}
+.meta-table th{width:7.5em;text-align:left;vertical-align:top;padding:var(--space-2) var(--space-3);color:var(--color-text-muted);font-weight:500;font-size:var(--text-xs);letter-spacing:.1em;white-space:nowrap}
+.meta-table td{padding:var(--space-2) var(--space-3);vertical-align:top;line-height:1.7;border-bottom:1px solid var(--color-divider)}
+.meta-table tr:last-child th,.meta-table tr:last-child td{border-bottom:none}
+.rel-link{display:inline-block;margin:0 var(--space-2) var(--space-1) 0;font-size:var(--text-xs);color:var(--color-primary);background:var(--color-primary-highlight);border-radius:var(--radius-sm);padding:var(--space-1) var(--space-2);cursor:pointer}
+.rel-link:hover{background:var(--color-primary);color:#fff}
+
+/* timeline */
+.timeline{position:relative;margin:var(--space-6) 0;padding-left:var(--space-8)}
+.timeline::before{content:'';position:absolute;left:0.55em;top:.4em;bottom:.4em;width:2px;background:var(--color-border)}
+.tl-item{position:relative;padding-bottom:var(--space-6)}
+.tl-item::before{content:'';position:absolute;left:calc(-1 * var(--space-8) + 0.35em);top:.55em;width:.8em;height:.8em;border-radius:50%;background:var(--color-primary);border:3px solid var(--color-bg)}
+.tl-year{font-family:var(--font-display);font-weight:700;color:var(--color-primary);font-size:var(--text-base);letter-spacing:.05em}
+.tl-title{font-weight:700;color:var(--color-ink);margin:var(--space-1) 0;font-size:var(--text-sm)}
+.tl-desc{color:var(--color-text-muted);font-size:var(--text-sm);max-width:68ch}
+.tl-more{font-size:var(--text-xs);color:var(--color-primary);cursor:pointer;padding:0}
+.ritual-stages{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--space-4);margin:var(--space-8) 0}
+.stage-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-5)}
+.stage-card h3{font-family:var(--font-display);font-size:var(--text-base);color:var(--color-primary);margin-bottom:var(--space-1)}
+.stage-card .stage-sub{font-size:var(--text-xs);color:var(--color-text-muted);margin-bottom:var(--space-3);letter-spacing:.08em}
+.stage-item{display:block;width:100%;text-align:left;padding:var(--space-2) 0;font-size:var(--text-sm);color:var(--color-text);border-bottom:1px dashed var(--color-divider)}
+.stage-item:last-child{border-bottom:none}
+.stage-item:hover{color:var(--color-primary)}
+
+/* spec table */
+.spec-table{width:100%;border-collapse:collapse;font-size:var(--text-sm);background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);overflow:hidden}
+.spec-table th{background:var(--color-surface-offset);text-align:left;padding:var(--space-3) var(--space-4);font-size:var(--text-xs);letter-spacing:.1em;color:var(--color-text-muted);font-weight:700}
+.spec-table td{padding:var(--space-3) var(--space-4);border-top:1px solid var(--color-divider);vertical-align:top;line-height:1.6}
+.spec-table td:first-child{white-space:nowrap;font-weight:500;color:var(--color-ink)}
+.table-scroll{overflow-x:auto;margin-bottom:var(--space-10)}
+
+footer{border-top:1px solid var(--color-divider);background:var(--color-surface)}
+.footer-inner{max-width:var(--content-default);margin:0 auto;padding:var(--space-6) var(--space-5);font-size:var(--text-xs);color:var(--color-text-muted);line-height:1.8}
+.footer-inner b{color:var(--color-text);font-weight:500}
+
+@media (max-width:640px){
+  .masthead{padding-top:var(--space-6)}
+  .timeline{padding-left:var(--space-6)}
+  .modal-head,.modal-body{padding-left:var(--space-4);padding-right:var(--space-4)}
+  .meta-table th{width:6em}
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="topbar"><span>小港龍湖廟大士爺祭典調查研究計畫</span><span>民國一一五年十一月建檔</span></div>
+  <div class="masthead">
+    <span class="db-tag">數位文化資料庫 DIGITAL CULTURE ARCHIVE</span>
+    <h1>小港龍湖廟大士爺祭典數位文化資料庫</h1>
+    <p class="subtitle">建廟沿革・港仔墘聚落・大士爺信仰・祭典科儀</p>
+    <div class="db-meta-row">
+      <span>藏品 <b id="stat-total">—</b> 筆</span>
+      <span>素材類別 <b>5</b> 類</span>
+      <span>建檔標準 <b>文化部國家文化記憶庫／Dublin Core</b></span>
+    </div>
+  </div>
+  <nav class="tabs" aria-label="資料庫導覽">
+    <div class="tabs-inner" role="tablist">
+      <button class="tab-btn" role="tab" data-tab="overview" aria-selected="true">主題導覽</button>
+      <button class="tab-btn" role="tab" data-tab="browse" aria-selected="false">藏品檢索</button>
+      <button class="tab-btn" role="tab" data-tab="timeline" aria-selected="false">大事紀與科儀</button>
+      <button class="tab-btn" role="tab" data-tab="spec" aria-selected="false">後設資料規範</button>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <!-- 主題導覽 -->
+  <section class="view active" id="view-overview" role="tabpanel">
+    <p class="lead">本資料庫以《小港龍湖廟大士爺祭典調查研究報告》及十場耆老口述歷史訪談紀錄為基礎，依文化部數位典藏標準建置，將龍湖廟建廟沿革、港仔墘聚落發展、大士爺信仰脈絡與祭典科儀，整併為<b id="lead-count">—</b>筆結構化藏品紀錄，採國家文化記憶庫五大素材類別（人物、事件、作品、影音、空間）分類，並以都柏林核心集（Dublin Core）十五項元素著錄。</p>
+    <div class="core-card">
+      <h2>小港龍湖廟大士爺祭典（核心檔）</h2>
+      <dl class="core-grid" id="core-grid"></dl>
+    </div>
+    <h2 class="section-title">藏品統計</h2>
+    <p class="section-note">點擊類別卡片即可前往檢索該類藏品。</p>
+    <div class="stats-grid" id="stats-grid"></div>
+    <div class="std-list">
+      <h3>建檔標準依據</h3>
+      <ol id="std-ol"></ol>
+    </div>
+  </section>
+
+  <!-- 藏品檢索 -->
+  <section class="view" id="view-browse" role="tabpanel">
+    <h2 class="section-title">藏品檢索</h2>
+    <p class="section-note">支援題名、描述、關鍵字之全文檢索；可依素材類別與主題分類篩選。</p>
+    <div class="toolbar">
+      <div class="search-box">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+        <input type="search" id="search-input" placeholder="輸入關鍵字，如：放水燈" aria-label="全文檢索">
+      </div>
+      <div id="cat-chips"></div>
+      <select id="subject-select" aria-label="主題分類篩選" style="padding:var(--space-2) var(--space-3);border:1px solid var(--color-border);border-radius:var(--radius-md);background:var(--color-surface);font-size:var(--text-sm)"></select>
+    </div>
+    <p class="result-count" id="result-count"></p>
+    <div class="record-grid" id="record-grid"></div>
+    <div class="empty-state" id="empty-state" hidden>未檢索到符合條件之藏品，請調整關鍵字或篩選條件。</div>
+  </section>
+
+  <!-- 大事紀與科儀 -->
+  <section class="view" id="view-timeline" role="tabpanel">
+    <h2 class="section-title">龍湖廟與港仔墘大事紀</h2>
+    <p class="section-note">自乾隆六十年（1795）至民國一百一十五年（2026），跨越二百餘年之歷史斷面。點擊「詳目」查看完整詮釋資料。</p>
+    <div class="timeline" id="timeline"></div>
+    <h2 class="section-title">祭典科儀流程</h2>
+    <p class="section-note">每年農曆七月十四日至十六日，遵循傳統靈寶派道教科儀；點擊儀程項目查看完整詮釋資料。</p>
+    <div class="ritual-stages" id="ritual-stages"></div>
+  </section>
+
+  <!-- 後設資料規範 -->
+  <section class="view" id="view-spec" role="tabpanel">
+    <h2 class="section-title">後設資料（Metadata）欄位規範</h2>
+    <p class="section-note">本資料庫後設資料以都柏林核心集（Dublin Core）十五項元素為核心，並對應國家文化記憶庫素材類別與文資局民俗個案欄位，確保資料交換與資源共享之互通性。</p>
+    <div class="table-scroll">
+      <table class="spec-table" id="spec-table">
+        <thead><tr><th>中文欄位</th><th>Dublin Core</th><th>對應標準／說明</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <h2 class="section-title">授權與權利聲明</h2>
+    <div class="std-list"><p style="font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.8" id="rights-text"></p></div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner" id="footer-inner"></div>
+</footer>
+
+<div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal">
+    <div class="modal-head">
+      <h2 id="modal-title"></h2>
+      <button class="modal-close" id="modal-close" aria-label="關閉">✕</button>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</div>
+
+<script>
+const DATA = /*__DATA__*/;
+const {DB_META, CORE, R} = DATA;
+const CAT_ORDER = ['空間','人物','作品','事件','影音'];
+const CAT_COLOR = {'空間':'var(--cat-space)','人物':'var(--cat-person)','作品':'var(--cat-work)','事件':'var(--cat-event)','影音':'var(--cat-av)'};
+const byId = {}; R.forEach(r => byId[r.id] = r);
+
+/* ---------- tabs ---------- */
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.setAttribute('aria-selected', b === btn ? 'true' : 'false'));
+    document.querySelectorAll('.view').forEach(v => v.classList.toggle('active', v.id === 'view-' + btn.dataset.tab));
+    window.scrollTo({top: 0});
+  });
+});
+function gotoTab(tab, filterCat){
+  const btn = document.querySelector(`.tab-btn[data-tab="${tab}"]`);
+  if (btn) btn.click();
+  if (filterCat) setCat(filterCat);
+}
+
+/* ---------- overview ---------- */
+document.getElementById('stat-total').textContent = R.length;
+document.getElementById('lead-count').textContent = R.length;
+const coreDefs = [
+  ['個案名稱', CORE.caseName], ['資產類別', CORE.assetsClassify], ['種類', CORE.assetsTypes],
+  ['公告', CORE.announcement], ['保存者', CORE.recorder], ['舉行時間', CORE.holdCalendar + '・' + CORE.holdPeriod],
+  ['舉行地點', CORE.addresses], ['主管機關', CORE.govInstitution], ['法令依據', CORE.lawsReference],
+  ['評定基準', CORE.judgeCriteria], ['登錄理由', CORE.registerReason], ['歷史源流', CORE.historyDevelopment],
+  ['儀式特徵', CORE.ceremonyFeature], ['禁忌', CORE.taboo],
+];
+document.getElementById('core-grid').innerHTML = coreDefs.map(([t, d]) =>
+  `<div class="core-item"><dt>${t}</dt><dd>${d}</dd></div>`).join('');
+const catStats = CAT_ORDER.map(c => ({c, n: R.filter(r => r.category === c).length}));
+document.getElementById('stats-grid').innerHTML = catStats.map(s =>
+  `<button class="stat-card" onclick="gotoTab('browse','${s.c}')">
+     <span class="num"><span class="cat-dot" style="background:${CAT_COLOR[s.c]}"></span>${s.n}</span>
+     <span class="label">${s.c}類藏品</span></button>`).join('');
+document.getElementById('std-ol').innerHTML = DB_META.standards.map(s => `<li>${s}</li>`).join('');
+
+/* ---------- browse ---------- */
+let curCat = '', curSubject = '', curQ = '';
+const allSubjects = [...new Set(R.flatMap(r => r.subjects))].sort();
+const subjSel = document.getElementById('subject-select');
+subjSel.innerHTML = '<option value="">全部主題分類</option>' + allSubjects.map(s => `<option value="${s}">${s}</option>`).join('');
+const chipsBox = document.getElementById('cat-chips');
+chipsBox.innerHTML = `<button class="chip" data-cat="" aria-pressed="true">全部</button>` +
+  CAT_ORDER.map(c => `<button class="chip" data-cat="${c}" aria-pressed="false">${c}</button>`).join('');
+chipsBox.querySelectorAll('.chip').forEach(chip => {
+  chip.addEventListener('click', () => setCat(chip.dataset.cat));
+});
+function setCat(cat){
+  curCat = cat;
+  chipsBox.querySelectorAll('.chip').forEach(c => c.setAttribute('aria-pressed', String(c.dataset.cat === cat)));
+  renderGrid();
+}
+document.getElementById('search-input').addEventListener('input', e => { curQ = e.target.value.trim(); renderGrid(); });
+subjSel.addEventListener('change', e => { curSubject = e.target.value; renderGrid(); });
+
+function esc(s){ return String(s || '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
+function matches(r){
+  if (curCat && r.category !== curCat) return false;
+  if (curSubject && !r.subjects.includes(curSubject)) return false;
+  if (curQ){
+    const hay = (r.title + r.description + r.keywords.join('') + r.id + (r.type||'') + (r.coverage||'')).toLowerCase();
+    if (!hay.includes(curQ.toLowerCase())) return false;
+  }
+  return true;
+}
+function renderGrid(){
+  const list = R.filter(matches);
+  document.getElementById('result-count').textContent = `檢索結果：${list.length} 筆` + (curCat ? `／${curCat}類` : '') + (curSubject ? `／${curSubject}` : '');
+  document.getElementById('empty-state').hidden = list.length > 0;
+  document.getElementById('record-grid').innerHTML = list.map(r => `
+    <button class="record-card" onclick="openModal('${r.id}')">
+      <div class="card-top"><span class="rec-id">${r.id}</span><span class="cat-tag ${r.category}">${r.category}</span></div>
+      <h3>${esc(r.title)}</h3>
+      <span class="rec-date">${esc(r.date)}</span>
+      <p>${esc(r.description)}</p>
+      <div class="kw-row">${r.keywords.slice(0,4).map(k => `<span class="kw">${esc(k)}</span>`).join('')}</div>
+    </button>`).join('');
+}
+renderGrid();
+
+/* ---------- modal ---------- */
+const overlay = document.getElementById('modal-overlay');
+function openModal(id){
+  const r = byId[id]; if (!r) return;
+  document.getElementById('modal-title').textContent = r.title;
+  const rows = [
+    ['系統識別碼', r.id], ['素材類別', r.category + '（國家文化記憶庫五大素材類別）'], ['資料類型', r.type],
+    ['主題分類', r.subjects.join('；')], ['關鍵字', r.keywords.join('、')],
+    ['內容描述', r.description], ['創作者', r.creator || '—'], ['貢獻者', r.contributor || '—'],
+    ['日期', r.date], ['涵蓋範圍', r.coverage || '—'],
+    ...(r.extent ? [['長度／規模', esc(r.extent)]] : []),
+    ...(r.language ? [['語言', esc(r.language)]] : []),
+    ...(r.format ? [['格式', esc(r.format)]] : []),
+    ...(r.formatStd ? [['數位物件規格', esc(r.formatStd)]] : []),
+    ...(r.rights ? [['權限（授權狀態）', esc(r.rights)]] : []),
+    ['來源', r.sourceUrl ? `<a href="${esc(r.sourceUrl)}" target="_blank" rel="noopener">${esc(r.source)}</a>` : (r.source || '—')],
+    ['關連', (r.rel || []).length ? r.rel.map(x => byId[x] ? `<span class="rel-link" onclick="openModal('${x}')">${esc(byId[x].title)}</span>` : '').join('') : '—'],
+  ];
+  document.getElementById('modal-body').innerHTML =
+    `<table class="meta-table">${rows.map(([k, v]) => `<tr><th>${k}</th><td>${v}</td></tr>`).join('')}</table>`;
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(){
+  overlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('modal-close').addEventListener('click', closeModal);
+overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+/* ---------- timeline ---------- */
+const chron = R.filter(r => r.type === '大事紀');
+document.getElementById('timeline').innerHTML = chron.map(r => `
+  <div class="tl-item">
+    <div class="tl-year">${esc(r.date)}</div>
+    <div class="tl-title">${esc(r.title.replace(/^[^：]*：/, ''))}</div>
+    <p class="tl-desc">${esc(r.description)}</p>
+    <button class="tl-more" onclick="openModal('${r.id}')">詳目 →</button>
+  </div>`).join('');
+const stages = [
+  ['前置作業', '農曆六月起', r => r.type === '科儀（前置作業）'],
+  ['七月十四・迎請', '迎大士・開光・放水燈', r => r.type === '科儀（七月十四）'],
+  ['七月十五・正日', '五更早朝至化大士', r => r.type === '科儀（七月十五）'],
+  ['七月十六・圓滿', '送聖安座', r => r.type === '科儀（七月十六）'],
+];
+document.getElementById('ritual-stages').innerHTML = stages.map(([name, sub, fn]) => {
+  const items = R.filter(fn);
+  return `<div class="stage-card"><h3>${name}</h3><div class="stage-sub">${sub}</div>` +
+    items.map(r => `<button class="stage-item" onclick="openModal('${r.id}')">${esc(r.title)}</button>`).join('') + `</div>`;
+}).join('');
+
+/* ---------- spec ---------- */
+const specRows = [
+  ['題名', 'Title', '藏品名稱（含年代與主題）'],
+  ['主題與關鍵字', 'Subject', '主題分類採國家文化記憶庫九大分類；關鍵字以呈現內容要點'],
+  ['內容描述', 'Description', '藏品內容、意義與脈絡之綜合性描述'],
+  ['創作者／貢獻者', 'Creator／Contributor', '文獻作者、工藝製作者、攝影者、口述者等'],
+  ['日期', 'Date', '依各該史料原始記載之紀年，併註西元紀年'],
+  ['資料類型', 'Type', '如：清代方志、紙糊工藝、科儀、大事紀、口述傳統等'],
+  ['格式', 'Format', '數位物件規格依文化部數位典藏規範（典藏級TIFF 350dpi／公用級JPEG）'],
+  ['系統識別碼', 'Identifier', '本資料庫唯一識別碼（LHM-類別-流水號）'],
+  ['來源', 'Source', '文獻出處及原始連結（URL）'],
+  ['語言', 'Language', '繁體中文（zh-Hant）'],
+  ['關連', 'Relation', '關連藏品之系統識別碼連結'],
+  ['涵蓋範圍', 'Coverage', '空間（地名）與時間之涵蓋範圍'],
+  ['權限', 'Rights', '依國家文化記憶庫計畫補助作業要點建議授權釋出'],
+  ['素材類別', '—（記憶庫擴充）', '國家文化記憶庫收存系統：人物、事件、作品、影音、空間'],
+  ['文資欄位', '—（文資局擴充）', '核心檔採國家文化資產網民俗個案欄位（個案名稱、保存者、儀式特徵等）'],
+];
+document.querySelector('#spec-table tbody').innerHTML =
+  specRows.map(([a, b, c]) => `<tr><td>${a}</td><td>${esc(b)}</td><td>${esc(c)}</td></tr>`).join('');
+document.getElementById('rights-text').textContent = DB_META.rightsNote;
+
+/* ---------- footer ---------- */
+document.getElementById('footer-inner').innerHTML =
+  `<b>${DB_META.name}</b>｜建檔單位：${DB_META.buildUnit}｜建檔日期：${DB_META.buildDate}<br>` +
+  `本資料庫內容依《小港龍湖廟大士爺祭典調查研究報告》及其所引文獻整理建檔，數位物件規格遵循文化部數位典藏環境與數位化工作流程指引。`;
+</script>
+<script data-pplx-inline-edit>
+(function () {
+  if (window === window.top) return;
+
+  const allowedParentOrigins = ["https://www.perplexity.ai","https://perplexity.ai","https://testing.perplexity.ai","https://staging.perplexity.ai","https://*.preview.i.perplexity.ai","http://perplexity.localhost","http://localhost:1420","http://127.0.0.1:1420","http://localhost:3000","http://127.0.0.1:3000","http://localhost:5173","http://127.0.0.1:5173"];
+  const MAX_FONT_BYTES = 500 * 1024;
+  const MAX_TOTAL_FONT_BYTES = 2 * 1024 * 1024;
+  const DEFAULT_LINE_HEIGHT = 16;
+  let scrollForwarding = false;
+  let scrollRaf = 0;
+  let trustedTopOrigin = null;
+
+  // Allow entries like "https://*.preview.i.perplexity.ai" — the wildcard
+  // matches a single DNS label (no dots), so "https://*.foo" cannot stretch
+  // across multiple labels.
+  function matchesAllowedOrigin(origin) {
+    if (!origin) return false;
+    for (const entry of allowedParentOrigins) {
+      if (!entry.includes("*")) {
+        if (entry === origin) return true;
+        continue;
+      }
+      const pattern = new RegExp(
+        "^" +
+          entry.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, "[^.]+") +
+          "$",
+      );
+      if (pattern.test(origin)) return true;
+    }
+    return false;
+  }
+
+  // Trust decision: when the sender is same-origin-visible (event.origin is a
+  // real origin like https://www.perplexity.ai) we trust event.origin directly.
+  // When event.origin is "null" (opaque broker srcdoc), we fall back to the
+  // broker's stamped `parentOrigin` to identify the top window. The fallback
+  // is claim-only — we rely on the browser's native `targetOrigin` enforcement
+  // on the response path (see postToTrustedTop) to ensure replies can't be
+  // delivered to anyone but the actual top window of that claimed origin.
+  function getTrustedParentOrigin(event) {
+    const forwardedParentOrigin =
+      typeof event.data.parentOrigin === "string" ? event.data.parentOrigin : null;
+    const parentOrigin = event.origin === "null" ? forwardedParentOrigin : event.origin;
+    return matchesAllowedOrigin(parentOrigin) ? parentOrigin : null;
+  }
+
+  // All responses go to window.top with targetOrigin = the allowlisted origin.
+  // An attacker that iframes us inside their own null-origin broker can claim
+  // any parentOrigin they like, but the browser will drop the reply whenever
+  // the real top's origin doesn't match — so the screenshot never leaves.
+  function postToTrustedTop(message) {
+    if (!trustedTopOrigin) return;
+    try {
+      window.top.postMessage(message, trustedTopOrigin);
+    } catch (_error) {}
+  }
+
+  const PICK_CAPABILITIES = ["pick"];
+  const PICK_CHAIN_LENGTH = 4;
+  const PICK_MAX_TEXT_CHARS = 120;
+  const PICK_MAX_HTML_CHARS = 300;
+
+  function truncate(value, maxChars) {
+    return value.length > maxChars ? value.slice(0, maxChars - 1) + "…" : value;
+  }
+
+  function isPickableElement(element) {
+    return (
+      element instanceof Element &&
+      element !== document.documentElement &&
+      element !== document.body
+    );
+  }
+
+  function resolvePickTarget(x, y) {
+    if (!Number.isFinite(x) || !Number.isFinite(y)) return null;
+    const element = document.elementFromPoint(x, y);
+    return isPickableElement(element) ? element.closest("svg") || element : null;
+  }
+
+  function pickLabel(element) {
+    if (element.id) return element.localName + "#" + element.id;
+    return [element.localName].concat(Array.from(element.classList).slice(0, 2)).join(".");
+  }
+
+  // Only attributes that help find the element in source. data-* values and URL
+  // query strings or fragments can carry tokens.
+  const PICK_ATTRIBUTES = new Set([
+    "id",
+    "class",
+    "name",
+    "type",
+    "role",
+    "alt",
+    "aria-label",
+    "href",
+    "src",
+  ]);
+
+  function pickAttributeValue(attribute) {
+    return attribute.name === "href" || attribute.name === "src"
+      ? attribute.value.split(/[?#]/)[0]
+      : attribute.value;
+  }
+
+  function describePickElement(element) {
+    const chain = [];
+    for (
+      let current = element;
+      isPickableElement(current) && chain.length < PICK_CHAIN_LENGTH;
+      current = current.parentElement
+    ) {
+      chain.unshift(current);
+    }
+    const attributes = Array.from(element.attributes)
+      .filter((attribute) => PICK_ATTRIBUTES.has(attribute.name))
+      .map((attribute) => ` ${attribute.name}="${pickAttributeValue(attribute).replace(/"/g, "&quot;")}"`)
+      .join("");
+    const text = (element.innerText || element.textContent || "").replace(/\s+/g, " ").trim();
+    return {
+      chain: chain.map(pickLabel),
+      html: truncate(`<${element.localName}${attributes}>`, PICK_MAX_HTML_CHARS),
+      text: text ? truncate(text, PICK_MAX_TEXT_CHARS) : undefined,
+    };
+  }
+
+  // Hover asks once per frame, and innerText on a large section forces layout,
+  // so only the rect is re-read while the pointer stays on the same element.
+  // Clicks ask for fresh details since the page may have changed the element.
+  let lastPick = null;
+
+  function describePickTarget(element, fresh) {
+    if (fresh || lastPick?.element !== element) {
+      lastPick = { element, details: describePickElement(element) };
+    }
+    const rect = element.getBoundingClientRect();
+    return {
+      rect: { x: rect.left, y: rect.top, width: rect.width, height: rect.height },
+      ...lastPick.details,
+    };
+  }
+
+  function inlineAll(original, clone) {
+    if (original.nodeType !== 1 || clone.nodeType !== 1) return;
+
+    try {
+      const computedStyle = getComputedStyle(original);
+      // cssText on a computed style is the serialized declaration in modern
+      // Chromium/Safari — a single read beats enumerating ~400 longhand
+      // properties. Firefox returns "" here, so we fall back on empty.
+      const serialized = computedStyle.cssText;
+      if (serialized) {
+        clone.style.cssText = serialized;
+      } else {
+        const parts = new Array(computedStyle.length);
+        for (let index = 0; index < computedStyle.length; index += 1) {
+          const property = computedStyle[index];
+          parts[index] = `${property}:${computedStyle.getPropertyValue(property)};`;
+        }
+        clone.style.cssText = parts.join("");
+      }
+    } catch (_error) {}
+
+    const originalChildren = original.children;
+    const clonedChildren = clone.children;
+    for (
+      let index = 0;
+      index < originalChildren.length && index < clonedChildren.length;
+      index += 1
+    ) {
+      inlineAll(originalChildren[index], clonedChildren[index]);
+    }
+  }
+
+  function extractFontUrl(srcValue) {
+    const matches = [
+      ...srcValue.matchAll(
+        /url\(["']?([^"')]+)["']?\)(?:\s*format\(["']?([^"')]+)["']?\))?/gi,
+      ),
+    ];
+    if (matches.length === 0) return null;
+    const woff2 = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff2"));
+    if (woff2) return woff2[1];
+    const woff = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff"));
+    if (woff) return woff[1];
+    return matches[0][1];
+  }
+
+  // Cache resolved font URL -> data URI across captures. Fonts on a page
+  // essentially never change, and a batch run emits multiple captures back to
+  // back — without this we'd refetch + re-base64 every time.
+  const fontDataUriCache = new Map();
+  const SRC_DECLARATION_RE = /src\s*:\s*[^;}]+/i;
+
+  async function fetchAsDataUri(url) {
+    if (fontDataUriCache.has(url)) return fontDataUriCache.get(url);
+    let dataUri = null;
+    try {
+      const response = await fetch(url, { mode: "cors", credentials: "omit" });
+      if (response.ok) {
+        const blob = await response.blob();
+        if (blob.size <= MAX_FONT_BYTES) {
+          dataUri = await new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () =>
+              resolve(typeof reader.result === "string" ? reader.result : null);
+            reader.onerror = () => resolve(null);
+            reader.readAsDataURL(blob);
+          });
+        }
+      }
+    } catch (_error) {
+      dataUri = null;
+    }
+    fontDataUriCache.set(url, dataUri);
+    return dataUri;
+  }
+
+  function collectFontFaceRuleTexts() {
+    const rules = [];
+    for (const sheet of document.styleSheets) {
+      let cssRules;
+      try {
+        cssRules = sheet.cssRules;
+      } catch (_error) {
+        continue;
+      }
+      if (!cssRules) continue;
+      for (const rule of cssRules) {
+        const cssText = rule.cssText || "";
+        if (cssText.startsWith("@font-face")) rules.push(cssText);
+      }
+    }
+    return rules;
+  }
+
+  async function buildInlinedFontCss() {
+    const ruleTexts = collectFontFaceRuleTexts();
+    if (ruleTexts.length === 0) return null;
+
+    const resolved = ruleTexts.map((cssText) => {
+      if (!SRC_DECLARATION_RE.test(cssText)) return null;
+      const srcMatch = cssText.match(/src\s*:\s*([^;}]+)[;}]/i);
+      if (!srcMatch) return null;
+      const url = extractFontUrl(srcMatch[1]);
+      if (!url) return null;
+      try {
+        return { cssText, url: new URL(url, document.baseURI).href };
+      } catch (_error) {
+        return null;
+      }
+    });
+
+    const dataUris = await Promise.all(
+      resolved.map((entry) => (entry ? fetchAsDataUri(entry.url) : Promise.resolve(null))),
+    );
+
+    const inlined = [];
+    let totalBytes = 0;
+    for (let index = 0; index < resolved.length; index += 1) {
+      const entry = resolved[index];
+      const dataUri = dataUris[index];
+      if (!entry || !dataUri) continue;
+      const approxBytes = dataUri.length * 0.75;
+      if (totalBytes + approxBytes > MAX_TOTAL_FONT_BYTES) break;
+      totalBytes += approxBytes;
+      inlined.push(entry.cssText.replace(SRC_DECLARATION_RE, `src: url("${dataUri}")`));
+    }
+    return inlined.length > 0 ? inlined.join("\n") : null;
+  }
+
+  function stripExternal(clone) {
+    const images = clone.querySelectorAll("img");
+    for (let index = 0; index < images.length; index += 1) {
+      const src = images[index].getAttribute("src");
+      if (src && !src.startsWith("data:")) images[index].removeAttribute("src");
+    }
+
+    const elements = clone.querySelectorAll("*");
+    for (let index = 0; index < elements.length; index += 1) {
+      const style = elements[index].style.cssText;
+      if (style && style.includes("url(")) {
+        elements[index].style.cssText = style.replace(
+          /url\(["']?(?!data:)[^)"']*["']?\)/gi,
+          "none",
+        );
+      }
+    }
+  }
+
+  function emitScroll() {
+    scrollRaf = 0;
+    if (!scrollForwarding) return;
+    postToTrustedTop({
+      type: "INLINE_EDIT_SCROLL",
+      scrollX: window.scrollX,
+      scrollY: window.scrollY,
+      capabilities: PICK_CAPABILITIES,
+    });
+  }
+
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (!scrollForwarding || scrollRaf) return;
+      scrollRaf = requestAnimationFrame(emitScroll);
+    },
+    { passive: true, capture: true },
+  );
+
+  async function handleCaptureRequest(event) {
+    const requestId = event.data.requestId;
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    function postResult(dataUrl) {
+      postToTrustedTop({
+        type: "INLINE_EDIT_SCREENSHOT_RESULT",
+        requestId,
+        dataUrl,
+        scrollX,
+        scrollY,
+      });
+    }
+
+    try {
+      // Wait for any pending web fonts to resolve so both inline metrics and
+      // the @font-face inlining below see the same loaded faces.
+      if (document.fonts && document.fonts.ready) {
+        try {
+          await document.fonts.ready;
+        } catch (_error) {}
+      }
+
+      const clone = document.documentElement.cloneNode(true);
+      inlineAll(document.documentElement, clone);
+
+      const removedNodes = clone.querySelectorAll("script,link[rel=\"stylesheet\"],style");
+      for (let index = 0; index < removedNodes.length; index += 1) {
+        removedNodes[index].remove();
+      }
+
+      stripExternal(clone);
+
+      // Re-embed web fonts as data-URI @font-face rules so the SVG rasterizer
+      // can resolve them — external font URLs aren't fetched during
+      // foreignObject rendering, which would otherwise force a fallback face
+      // and change text metrics.
+      const inlinedFontCss = await buildInlinedFontCss();
+      if (inlinedFontCss) {
+        const styleEl = document.createElement("style");
+        styleEl.textContent = inlinedFontCss;
+        const head = clone.querySelector("head");
+        if (head) head.appendChild(styleEl);
+        else clone.insertBefore(styleEl, clone.firstChild);
+      }
+
+      const html = new XMLSerializer().serializeToString(clone);
+      const svg =
+        `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">` +
+        '<foreignObject width="100%" height="100%">' +
+        `<div xmlns="http://www.w3.org/1999/xhtml" style="width:${width}px;height:${height}px;overflow:hidden">` +
+        `<div style="position:relative;left:-${scrollX}px;top:-${scrollY}px">` +
+        html +
+        "</div></div></foreignObject></svg>";
+      const svgUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+      const image = new Image();
+      image.onload = function () {
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext("2d").drawImage(image, 0, 0);
+        postResult(canvas.toDataURL("image/png"));
+      };
+      image.onerror = function () {
+        postResult(null);
+      };
+      image.src = svgUrl;
+    } catch (_error) {
+      postResult(null);
+    }
+  }
+
+  window.addEventListener("message", function (event) {
+    if (!event.data) return;
+    // Only accept messages from the direct parent frame. Blocks sibling /
+    // unrelated-window postMessage senders that could otherwise reach us.
+    if (event.source !== window.parent) return;
+
+    const trustedParentOrigin = getTrustedParentOrigin(event);
+    if (!trustedParentOrigin) return;
+    trustedTopOrigin = trustedParentOrigin;
+
+    if (event.data.type === "INLINE_EDIT_PICK") {
+      const element = resolvePickTarget(event.data.x, event.data.y);
+      postToTrustedTop({
+        type: "INLINE_EDIT_PICK_RESULT",
+        seq: event.data.seq,
+        target: element ? describePickTarget(element, event.data.fresh === true) : null,
+      });
+      return;
+    }
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_START") {
+      scrollForwarding = true;
+      emitScroll();
+      return;
+    }
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_STOP") {
+      scrollForwarding = false;
+      if (scrollRaf) cancelAnimationFrame(scrollRaf);
+      scrollRaf = 0;
+      return;
+    }
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_BY") {
+      const { deltaX, deltaY, deltaMode } = event.data;
+      if (!scrollForwarding || !Number.isFinite(deltaX) || !Number.isFinite(deltaY)) return;
+      if (deltaMode !== 0 && deltaMode !== 1 && deltaMode !== 2) return;
+      const lineHeight =
+        parseFloat(getComputedStyle(document.documentElement).lineHeight) || DEFAULT_LINE_HEIGHT;
+      const scaleX = deltaMode === 1 ? lineHeight : deltaMode === 2 ? window.innerWidth : 1;
+      const scaleY = deltaMode === 1 ? lineHeight : deltaMode === 2 ? window.innerHeight : 1;
+      // The selection overlay receives the wheel event instead of this iframe.
+      // Instant scrolling preserves trackpad deltas even on smooth-scroll sites.
+      window.scrollBy({ left: deltaX * scaleX, top: deltaY * scaleY, behavior: "instant" });
+      emitScroll();
+      return;
+    }
+
+    if (event.data.type !== "INLINE_EDIT_CAPTURE_REQUEST") return;
+
+    handleCaptureRequest(event);
+  });
+})();
+
+
+</script></body>
+</html>
